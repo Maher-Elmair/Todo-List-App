@@ -62,24 +62,24 @@
 /* ====== CUSTOM FONTS ====== */
 @font-face {
   font-family: Alexandria;
-  src: url("../public/fonts/Alexandria/Alexandria-Regular.ttf");
+  src: url("/fonts/Alexandria/Alexandria-Regular.ttf") format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: Alexandria;
-  src: url("../public/fonts/Alexandria/Alexandria-Bold.ttf");
+  src: url("/fonts/Alexandria/Alexandria-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 
 @font-face {
   font-family: Alexandria;
-  src: url("../public/fonts/Alexandria/Alexandria-Black.ttf");
+  src: url("/fonts/Alexandria/Alexandria-Black.ttf") format("truetype");
   font-weight: 900;
 }
 
 @font-face {
   font-family: Alexandria;
-  src: url("../public/fonts/Alexandria/Alexandria-Light.ttf");
+  src: url("/fonts/Alexandria/Alexandria-Light.ttf") format("truetype");
   font-weight: 200;
 }

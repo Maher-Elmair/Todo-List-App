@@ -1,4 +1,3 @@
-// TodoList.js
 import * as React from "react";
 import { useState, useContext, useEffect } from "react";
 import {
@@ -22,7 +21,7 @@ export default function TodoList() {
   const [titleInput, setTitleInput] = useState("");
   const [displayedTodosType, setDisplayedTodosType] = useState("all");
 
-    // ✅ مصفوفات الفلترة المحسوبة من todos مباشرة (وليس من التخزين المحلي)
+  // ✅ مصفوفات الفلترة المحسوبة من todos مباشرة (وليس من التخزين المحلي)
   const completedTodos = todos.filter((t) => t.isCompleted);
   const notCompletedTodos = todos.filter((t) => !t.isCompleted);
 
@@ -39,19 +38,18 @@ export default function TodoList() {
   // 🧱 تحويل قائمة المهام إلى عناصر JSX
   const todosJsx = todosToBeRendered.map((t) => <Todo key={t.id} todo={t} />);
 
-
   // ✅ تحميل المهام من Local Storage عند تحميل المكون لأول مرة
- // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-  //السطر القادم يسبب خطاء في حالة عدم وجود بيانات في
-  // ال localStorage ولهاذا تم  تفادي هذة المشكلو في الاسفل مع السطر بعد القادم
-//const storageTodos = JSON.parse(localStorage.getItem("todos"));
+    //السطر القادم يسبب خطاء في حالة عدم وجود بيانات في
+    // ال localStorage ولهاذا تم  تفادي هذة المشكلو في الاسفل مع السطر بعد القادم
+    //const storageTodos = JSON.parse(localStorage.getItem("todos"));
 
-//تحسين الكود عبر التحقق من وجود بيانات
-// في `localStorage` قبل محاولة تحميلها، لتفادي الأخطاء عند التشغيل الأول. 
-const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
+    //تحسين الكود عبر التحقق من وجود بيانات
+    // في `localStorage` قبل محاولة تحميلها، لتفادي الأخطاء عند التشغيل الأول.
+    const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
 
-      setTodos(storageTodos);
+    setTodos(storageTodos);
   }, [setTodos]); // ✅ كده التحذير هيختفي
 
   // ✅ تغيير نوع المهام المعروضة عند تغيير الفلتر
@@ -59,7 +57,7 @@ const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
     setDisplayedTodosType(e.target.value);
   }
 
-    // 🆕 عند الضغط على زر "إضافة" مهمة جديدة
+  // 🆕 عند الضغط على زر "إضافة" مهمة جديدة
   function handleAddClick() {
     const newTodo = {
       id: uuidv4(),
@@ -78,15 +76,16 @@ const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
     // 🧼 تفريغ حقل الإدخال بعد الإضافة
     setTitleInput("");
   }
-  
+
   return (
     <Container maxWidth="sm">
-      <Card sx={{
-        minWidth: 275,
-        maxHeight: "80vh",
-        overflowY: "scroll",
-
-      }}>
+      <Card
+        sx={{
+          minWidth: 275,
+          maxHeight: "80vh",
+          overflowY: "scroll",
+        }}
+      >
         <CardContent>
           <Typography variant="h2" style={{ fontWeight: "bold" }}>
             مهامي
@@ -111,7 +110,12 @@ const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
           {todosJsx}
 
           {/* ➕ إضافة مهمة جديدة */}
-          <Grid container spacing={2} columns={{ xs: 12 }} style={{ marginTop: "20px" }}>
+          <Grid
+            container
+            spacing={2}
+            columns={{ xs: 12 }}
+            style={{ marginTop: "20px" }}
+          >
             <Grid size={8}>
               <TextField
                 style={{ width: "100%" }}
@@ -122,17 +126,18 @@ const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
               />
             </Grid>
             <Grid size={4}>
-              <Button style={{ width: "100%", height: "100%" }}
-                variant="contained" onClick={handleAddClick}
-                disabled={titleInput.length === 0}>
+              <Button
+                style={{ width: "100%", height: "100%" }}
+                variant="contained"
+                onClick={handleAddClick}
+                disabled={titleInput.length === 0}
+              >
                 إضافة
               </Button>
             </Grid>
           </Grid>
         </CardContent>
-      </Card >
-    </Container >
+      </Card>
+    </Container>
   );
 }
-
-
