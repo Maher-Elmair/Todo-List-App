@@ -1,6 +1,6 @@
 # 📋 todo-list-app
 
-**A responsive and dynamic task management web application built with React and Material UI.**  
+**A responsive and dynamic task management web application built with React, Vite, and Material UI.**
 
 🎯 This is my **second official project after completing the React course** 💪  
 🚀 From the Udemy course by Eng. **Yarob Al Mostafa** ([Tarmeez Academy](https://www.youtube.com/@tarmeez))
@@ -9,24 +9,27 @@
 
 ## 📖 Project Description
 
-This project is a fully functional **To-Do List App** built with **React** and styled using **Material UI (MUI)**.  
-It allows users to add, complete, edit, and delete tasks, with automatic storage of data using `localStorage`.
+This project is a fully functional **To-Do List App** built using **React + Vite** and styled with **Material UI (MUI)**.  
+It allows users to add, complete, edit, and delete tasks with real-time toast notifications.  
+Tasks are persisted automatically using the browser's `localStorage`.
 
-It’s designed with **Arabic RTL support**, responsive layout, and a custom theme using the **Alexandria** font.
+The app supports **Arabic RTL layout**, a custom Material UI theme (with **Alexandria** font), and a modular structure using custom **React Contexts**.
 
 ---
 
 ## ✅ Features
 
-- 📝 Add new tasks with a title  
-- ✅ Mark tasks as completed (with line-through style)  
-- 📝 Edit task title and details via Dialog  
-- 🗑️ Delete tasks with confirmation dialog  
-- 🔁 Filter tasks: all, completed, or not completed  
-- 💾 Auto-save tasks to browser's Local Storage  
-- 🧠 Global state management using React Context  
-- 🌐 RTL layout and Arabic support  
-- 📱 Responsive Material UI design  
+- 📝 Add new tasks with title & details  
+- ✅ Mark tasks as completed with clear visual feedback  
+- 📝 Edit tasks using a clean modal dialog  
+- 🗑️ Delete tasks with confirmation prompts  
+- 🔁 Filter tasks by all, completed, or not completed  
+- 💾 Save tasks automatically to localStorage  
+- 📢 Show toast messages (success/info) for task actions  
+- 🧠 Global state management via custom React Contexts  
+- 🌐 Right-to-left layout and full Arabic support  
+- ⚡ Built with **Vite** for faster development & builds  
+- 📱 Fully responsive UI using Material UI
 
 ---
 
@@ -34,24 +37,27 @@ It’s designed with **Arabic RTL support**, responsive layout, and a custom the
 
 | Concept                | Usage                                                   |
 |------------------------|---------------------------------------------------------|
-| `useState`             | Manage tasks and form input values                      |
-| `useContext`           | Share task data globally via `TodosContext`             |
-| `useEffect`            | Load tasks from `localStorage` on initial render        |
-| `UUID`                 | Generate unique IDs for each task                       |
-| `Conditional Rendering`| Toggle dialogs and filters dynamically                  |
+| `useState`             | Manage tasks, UI dialogs, and toast state               |
+| `useContext`           | Share global task and toast state across components     |
+| `useEffect`            | Load & sync tasks with localStorage                     |
+| `UUID`                 | Generate unique task IDs                                |
+| `Conditional Rendering`| Toggle dialogs, toast, and filters dynamically          |
+| `React.forwardRef`     | Create reusable custom alert components                 |
 
 ---
 
 ## 🧰 Tools & Libraries
 
-| Tool                | Purpose                                    |
-|---------------------|--------------------------------------------|
-| **React**           | JavaScript library for building UI         |
-| **Material UI (MUI)** | Component library for styling & layout   |
-| **UUID**            | Generate unique task IDs                   |
-| **Alexandria Font** | Custom font for Arabic UI                  |
-| **Local Storage**   | Persistent data storage in the browser     |
-| **HTML/CSS**        | Base styling and custom tweaks             |
+| Tool                 | Purpose                                           |
+|----------------------|---------------------------------------------------|
+| **React**            | Main framework for UI logic                       |
+| **Vite**             | Fast development environment and bundler          |
+| **Material UI (MUI)**| UI components, dialogs, and theming               |
+| **UUID**             | Unique task IDs                                   |
+| **Alexandria Font**  | Elegant Arabic typography                         |
+| **Local Storage**    | Persistent storage for tasks                      |
+| **MUI Snackbar/Alert**| Toast notifications for user actions             |
+| **Custom Contexts**  | Modular state sharing across components           |
 
 ---
 
@@ -71,10 +77,11 @@ It’s designed with **Arabic RTL support**, responsive layout, and a custom the
 
 ## 📝 Notes
 
-- ✅ This project was **completed on April 14, 2025**.  
-- 🧠 It's my **second project** after finishing the complete React course.  
-- ⚒️ It focuses on managing state across components and implementing real-world CRUD logic.  
-- 🚫 This project is **currently built for development on localhost only**.
+- ✅ This project was **completed on April 14, 2025**, and later enhanced in August 2025  
+- 🧠 It's my **second project** after completing a full React course  
+- 🛠️ Now powered by **Vite** for optimal development experience  
+- 🧩 Enhanced with modular contexts for todos and toast management  
+- 🚫 Project currently designed for localhost use (until deployed)
 
 ---
 
@@ -96,23 +103,21 @@ It’s designed with **Arabic RTL support**, responsive layout, and a custom the
 ## 🙋‍♂️ About Me
 
 - 📧 Email: [maher.elmair.dev@gmail.com](mailto:maher.elmair.dev@gmail.com)  
-- 🔗 LinkedIn: [https://www.linkedin.com/in/maher-elmair-831042237](https://www.linkedin.com/in/maher-elmair-831042237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- 🔗 LinkedIn: [https://www.linkedin.com/in/maher-elmair-831042237](https://www.linkedin.com/in/maher-elmair-831042237)
 
 ---
 
 ## 🔗 Live Preview
 
-🎥 **View the project live on GitHub Pages:**
+🎥 **View the project live on GitHub Pages (or other host):**
 
 🌐 [https://maher-elmair.github.io/Todo-List-App/](https://maher-elmair.github.io/Todo-List-App/)
 
-> ⚠️ *Make sure to update the live URL here once the project is deployed.*
+> ⚠️ *Make sure to update the live URL if deploying via Vite or using a different host (e.g., Netlify or Vercel).*
 
 ---
 
 ## 🙌 Thank You
 
 If you liked the project, please ⭐ the repository!  
-Feel free to open issues or submit pull requests with improvements 🙏
-
----
+Feel free to open issues or contribute with PRs — always appreciated 🙏
