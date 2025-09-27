@@ -100,10 +100,14 @@ The app supports **Arabic RTL layout**, a custom Material UI theme (with **Alexa
 
 ---
 
-## 🙋‍♂️ About Me
+## 🧑‍💻 Author
 
-- 📧 Email: [maher.elmair.dev@gmail.com](mailto:maher.elmair.dev@gmail.com)  
-- 🔗 LinkedIn: [https://www.linkedin.com/in/maher-elmair-831042237](https://www.linkedin.com/in/maher-elmair-831042237)
+**Maher Elmair**
+
+- 📫 [maher.elmair.dev@gmail.com](mailto:maher.elmair.dev@gmail.com)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/maher-elmair)
+- ✖️ [X (Twitter)](https://x.com/Maher_Elmair)  
+- ❤️ Made with passion by [Maher Elmair](https://maher-elmair.github.io/My_Website)
 
 ---
 
@@ -112,8 +116,6 @@ The app supports **Arabic RTL layout**, a custom Material UI theme (with **Alexa
 🎥 **View the project live on GitHub Pages (or other host):**
 
 🌐 [https://maher-elmair.github.io/Todo-List-App/](https://maher-elmair.github.io/Todo-List-App/)
-
-> ⚠️ *Make sure to update the live URL if deploying via Vite or using a different host (e.g., Netlify or Vercel).*
 
 ---
 
