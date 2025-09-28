@@ -73,10 +73,11 @@ export default function Todo({ todo, showDelete, showUpdate }) {
 
             {/* 🎛️ أزرار التحكم */}
             <Grid
-              size={4}
+              size={{ xs: 12, sm: 4 }}
               display="flex"
-              justifyContent="space-around"
+              justifyContent={{ xs: "center", sm: "space-around" }}
               alignItems="center"
+              sx={{ mt: { xs: 2, sm: 0 }, gap: { xs: 2, sm: 0 } }}
             >
               {/* زر إنهاء المهمة */}
               <IconButton
