@@ -1,10 +1,4 @@
-import {
-  Card,
-  Grid,
-  CardContent,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import { Card, Grid, CardContent, Typography, IconButton } from "@mui/material";
 
 import {
   Check as CheckIcon,
@@ -14,28 +8,17 @@ import {
 
 import React, { useContext, useState } from "react";
 
-import { TodosContext } from "../contexts/todosContext";
 import { useToast } from "../contexts/ToastContext";
+import { useTodosDispatch } from "../contexts/todosContext";
 
-export default function Todo({ todo ,showDelete , showUpdate }) {
-  const { todos, setTodos } = useContext(TodosContext);
-  const { showHideToast } = useToast();
-
-
-  const [updatedTodo, setUpdatedTodo] = useState({
-    title: todo.title,
-    details: todo.details,
-  });
+export default function Todo({ todo, showDelete, showUpdate }) {
+  const dispatch = useTodosDispatch();
+	const { showHideToast } = useToast();
 
   // ✅ تحديث حالة الإنجاز للمهمة
   function handleCompleteClick() {
-    const updatedTodos = todos.map((t) =>
-      t.id === todo.id ? { ...t, isCompleted: !t.isCompleted } : t
-    );
-    setTodos(updatedTodos);
-    // 📝 حفظ التعديلات في localStorage
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-    showHideToast (" تم التعديل بنجاح")
+    dispatch({ type: "toggledCompleted", payload: todo });
+    showHideToast(" تم التعديل بنجاح");
   }
 
   // ✏️ عند الضغط على زر "تعديل"
@@ -50,9 +33,9 @@ export default function Todo({ todo ,showDelete , showUpdate }) {
 
   return (
     <>
-     {/* Dialog الحذف المحلي القديم */}
+      {/* Dialog الحذف المحلي القديم */}
       {/* Dialog التعديل المحلي القديم */}
-      
+
       {/* 🧾 بطاقة عرض المهمة */}
       <Card
         sx={{
@@ -60,7 +43,8 @@ export default function Todo({ todo ,showDelete , showUpdate }) {
           background: "#283593",
           color: "white",
           marginTop: 5,
-        }}>
+        }}
+      >
         <CardContent>
           <Grid
             container

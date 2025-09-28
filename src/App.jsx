@@ -6,7 +6,7 @@ import TodoList from "./components/TodoList";
 import MySnackBar from "./components/MySnackBar";
 
 // 🌍 استيراد السياقات
-import { TodosContext } from "./contexts/todosContext";
+import TodosProvider from "./contexts/todosContext";
 import { ToastProvider } from "./contexts/ToastContext";
 
 // 🎨 استيراد مكونات Material UI
@@ -53,26 +53,25 @@ function App() {
   const [todos, setTodos] = useState(initialTodos);
   return (
     <ThemeProvider theme={theme}>
-      <ToastProvider>
-        {/* 💫 التطبيق داخل صناديق التنسيق */}
-        <div
-          className="App"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#191b1f",
-            height: "100vh",
-            direction: "rtl",
-          }}
-        >
-          {/* 🧩 تغليف المكونات باستخدام TodosContext */}
-          <TodosContext.Provider value={{ todos, setTodos }}>
-            {/* 📋 عرض قائمة المهام */}
-            <TodoList />
-          </TodosContext.Provider>
-        </div>
-      </ToastProvider>
+      <TodosProvider>
+        <ToastProvider>
+          {/* 💫 التطبيق داخل صناديق التنسيق */}
+          <div
+            className="App"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              background: "#191b1f",
+              height: "100vh",
+              direction: "rtl",
+            }}
+          >
+              {/* 📋 عرض قائمة المهام */}
+              <TodoList />
+          </div>
+        </ToastProvider>
+      </TodosProvider>
     </ThemeProvider>
   );
 }

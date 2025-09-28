@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useMemo } from "react";
+import { useState, useContext, useEffect, useMemo, useReducer } from "react";
 import {
   Container,
   Card,
@@ -19,13 +19,15 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 import Todo from "./Todo";
-import { TodosContext } from "../contexts/todosContext";
+import { useTodos, useTodosDispatch } from "../contexts/todosContext";
 import { useToast } from "../contexts/ToastContext";
+import todosReducer from "../reducers/todosReducer";
 
 // ✅ المكون الرئيسي لقائمة المهام
 export default function TodoList() {
   // 🧠 جلب المهام من الـ Context
-  const { todos, setTodos } = useContext(TodosContext);
+  const todos = useTodos();
+  const dispatch = useTodosDispatch();
   const { showHideToast } = useToast();
 
   // 🧪 تعريف حالات التحكم
@@ -34,7 +36,7 @@ export default function TodoList() {
   const [showUpdateDialog, setShowUpdateDialog] = useState(false);
   const [titleInput, setTitleInput] = useState("");
   const [displayedTodosType, setDisplayedTodosType] = useState("all");
-  
+
   // ✅ استخدام useMemo لتقليل عمليات الفلترة الزائدة أثناء إعادة التصيير
   const completedTodos = useMemo(() => {
     return todos.filter((t) => t.isCompleted);
@@ -54,10 +56,7 @@ export default function TodoList() {
 
   // 📦 تحميل المهام من localStorage عند أول تحميل للصفحة
   useEffect(() => {
-    const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
-    if (storageTodos) {
-      setTodos(storageTodos);
-    }
+    dispatch({ type: "get" });
   }, []);
 
   // 🔁 تغيير نوع المهام المعروضة (فلترة)
@@ -67,16 +66,7 @@ export default function TodoList() {
 
   // ➕ إضافة مهمة جديدة
   function handleAddClick() {
-    const newTodo = {
-      id: uuidv4(),
-      title: titleInput,
-      details: "",
-      isCompleted: false,
-    };
-
-    const updatedTodos = [...todos, newTodo];
-    setTodos(updatedTodos);
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    dispatch({ type: "added", payload: { newTitle: titleInput } });
     setTitleInput(""); // إعادة تعيين الحقل بعد الإضافة
     showHideToast("تمت الإضافة بنجاح");
   }
@@ -94,10 +84,8 @@ export default function TodoList() {
 
   // 🗑️ تأكيد الحذف
   function handleDeleteConfirm() {
-    const updatedTodos = todos.filter((t) => t.id !== dialogTodo.id);
-    setTodos(updatedTodos);
+    dispatch({ type: "deleted", payload: dialogTodo });
     setShowDeleteDialog(false);
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
     showHideToast("تم الحذف بنجاح");
   }
 
@@ -114,20 +102,8 @@ export default function TodoList() {
 
   // ✅ تأكيد التعديل
   function handleUpdateConfirm() {
-    const updatedTodos = todos.map((t) => {
-      if (t.id === dialogTodo.id) {
-        return {
-          ...t,
-          title: dialogTodo.title,
-          details: dialogTodo.details,
-        };
-      }
-      return t;
-    });
-
-    setTodos(updatedTodos);
+    dispatch({ type: "updated", payload: dialogTodo });
     setShowUpdateDialog(false);
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
     showHideToast("تم التحديث بنجاح");
   }
 
